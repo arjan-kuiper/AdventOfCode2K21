@@ -1,0 +1,20 @@
+{
+  "name": "adventofcode2k21",
+  "version": "1.0.0",
+  "description": "AdventOfCode2K21",
+  "main": "_helpers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arjan-kuiper/AdventOfCode2K21.git"
+  },
+  "keywords": [],
+  "author": "Arjan Kuiper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arjan-kuiper/AdventOfCode2K21/issues"
+  },
+  "homepage": "https://github.com/arjan-kuiper/AdventOfCode2K21#readme"
+}
