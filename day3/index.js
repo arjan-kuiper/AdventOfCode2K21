@@ -9,7 +9,7 @@ function calculatePowerConsumption(log) {
     for (line of log) {
         let [...bits] = line;
         bits = bits.map(Number);
-        
+
         for (let i = 0; i < commonBits.length; i++) {
             commonBits[i] += bits[i]
         }
@@ -24,5 +24,39 @@ function calculatePowerConsumption(log) {
     return parseInt(gamma, 2) * parseInt(epsilon, 2);
 }
 
-const answer = calculatePowerConsumption(data);
-console.log(answer);
+function calculateLifeSupportRating(log) {
+    const bitCollection = [];
+
+    // Disect all of the bits from the lines
+    for (line of log) {
+        let [...bits] = line;
+        bitCollection.push(bits.map(Number));
+    }
+
+    // Do a loop only twice so we can calculate the oxygen and co2 bits
+    let oxygen, co2;
+    for (let i = 0; i < 2; i++) {
+        let results = bitCollection;
+        let counter = 0;
+        do {
+            /**
+             * So basically, its not working yet :)
+             */
+
+            // If i === 0, we're working out the oxygen generator rating
+            // If i === 1, we're working out the CO2 scrubber rating
+            const bits = results.filter((b) => b[counter] == !i).length;
+            results = results.filter((b) => b[counter] == bits >= results.length - bits);
+            counter++;
+        } while (results.length !== 1);
+
+        // Write the results
+        if (i === 0) { oxygen = results[0]; }
+        else { co2 = results[0]; }   
+    }
+
+    return parseInt(oxygen.join(''), 2) * parseInt(co2.join(''), 2);
+}
+
+const answer = calculateLifeSupportRating(data);
+console.log('ANSWER: ' + answer);
